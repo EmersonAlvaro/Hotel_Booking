@@ -1,9 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .models import *
 from .forms import ReservaForm
-import random
-
- 
+import random 
 
 # Create your views here.
 
