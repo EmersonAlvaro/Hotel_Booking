@@ -26,7 +26,7 @@ SECRET_KEY = 'kezu*&a-w@hg)^l94w)r&6tlu_h&$5ylj!d^1s#$3)r^yo0=!_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ecardoso.pythonanywhere.com']
 
 
 # Application definition
