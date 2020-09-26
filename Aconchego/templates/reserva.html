@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+{% load widget_tweaks %}
+
+<div class="testimonial_area">     
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3>Dados da Reserva: </h3>
+                <br>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="Cbeck In "><h5>Check In : </h5></label>
+                            {% render_field fullform.checkindate class+='form-control' type='date' %}                        
+                        </div>
+                
+                        <div class="form-group col-md-3">
+                            <label for="Check Out"><h5>Check Out: </h5></label>
+                            {% render_field fullform.checkoutdate class+='form-control' type='date' %}                        
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="Adultos"><h5>Adultos: </h5></label>
+                            {% render_field fullform.adultos class+='form-control' %}
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="Criancas"><h5>Criancas: </h5></label>
+                            {% render_field fullform.crianca class+='form-control'  %}
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="Hotel"><h5>Nome do Hotel : </h5> </label>
+                        </div>
+                        <div class="form-group col-md-8">
+                            {% render_field fullform.hotel class='custom-select' %}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="Hotel"><h5>Tipo do Quarto : </h5> </label>
+                        </div>
+                        <div class="form-group col-md-8">
+                            {% render_field fullform.room class='custom-select'  %}
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="Preco"><h5>Preco:</h5>  </label>
+                        </div>
+                        <div class="form-group col-md-8">
+                            {% render_field fullform.preco class+='form-control' %}
+                        </div>
+                    </div>
+                    <br>
+                    <h4>Dados do Cliente : </h4>
+                    <br>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="first_name"><h5>First Name:</h5> </label>
+                            {% render_field fullform.first_name class+='form-control' placeholder="First Name" %}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="last_name"><h5>Last Name: </h5></label>
+                            {% render_field fullform.last_name class+='form-control' placeholder="Last Name" %}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="email"><h5>Email: </h5></label>
+                            {% render_field fullform.email class+='form-control' placeholder="Email" %}
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="reset_btn">
+                        <button class="boxed-btn4" type="submit">Reservar</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+
+            <div class=" col-lg-4">
+                <!-- Addd somo Widgets Here  -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

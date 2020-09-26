@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
 <!-- slider_area_start -->
@@ -59,34 +60,33 @@
             <div class="col-lg-9">
                 <div class="search_wrap">
                     <form class="search_form" action="#">
+                        {% csrf_token %}
 
-                        <div class="input_field">
-                            <input id="datepicker" placeholder="Check In Date">
-                        </div>
-                        <div class="input_field">
-                            <input type="date" placeholder="Check Out Date">
-                        </div>
+                        <div class="form-row align-items-center">
 
-                        <div class="input_field">
-                            <select>
-                                <option data-display="Adultos">Adulto</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="2">3</option>
-                            </select>
-                        </div>
+                            <div class="col-auto mb-2">
+                                <label for="Cbeck In ">Check In Date : </label>
+                                {% render_field searchform.checkindate class+='form-control' type='date' %}                        
+                            </div>
 
-                        <div class="input_field">
-                            <select>
-                                <option data-display="Criancas">Crianca</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="2">3</option>
-                            </select>
-                        </div>
+                            <div class="col-auto mb-2">
+                                <label for="Cbeck In ">Check Out Date : </label>
+                                {% render_field searchform.checkoutdate class+='form-control' type='date' %}                        
+                            </div>
 
-                        <div class="search_btn">
-                            <button class="boxed-btn4 " type="submit">Search</button>
+                            <div class="col-auto mb-1">
+                                <label for="Adultos">Adultos: </label>
+                                {% render_field searchform.adultos class+='form-control' %}
+                            </div>
+                            <div class="col-auto mb-1">
+                                <label for="Criancas">Criancas: </label>
+                                {% render_field searchform.crianca class+='form-control'  %}
+                            </div>
+
+                            <div class="col-auto">
+                                <button class="boxed-btn4" type="submit">Search</button>
+                            </div>
+
                         </div>
                     </form>
                 </div>

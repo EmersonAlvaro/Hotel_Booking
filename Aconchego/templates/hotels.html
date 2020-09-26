@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
 
@@ -16,36 +17,35 @@
                 <div class="col-lg-9">
                     <div class="search_wrap">
                         <form class="search_form" action="#">
-                            
-                            <div class="input_field">
-                                <input id="datepicker" placeholder="Check In Date">
+                            {% csrf_token %}
+    
+                            <div class="form-row align-items-center">
+    
+                                <div class="col-auto mb-2">
+                                    <label for="Cbeck In ">Check In Date : </label>
+                                    {% render_field searchform.checkindate class+='form-control' type='date' %}                        
+                                </div>
+    
+                                <div class="col-auto mb-2">
+                                    <label for="Cbeck In ">Check Out Date : </label>
+                                    {% render_field searchform.checkoutdate class+='form-control' type='date' %}                        
+                                </div>
+    
+                                <div class="col-auto mb-1">
+                                    <label for="Adultos">Adultos: </label>
+                                    {% render_field searchform.adultos class+='form-control' %}
+                                </div>
+                                <div class="col-auto mb-1">
+                                    <label for="Criancas">Criancas: </label>
+                                    {% render_field searchform.crianca class+='form-control'  %}
+                                </div>
+    
+                                <div class="col-auto">
+                                    <button class="boxed-btn4" type="submit">Search</button>
+                                </div>
+    
                             </div>
-                            <div class="input_field">
-                                <input type="date" placeholder="Check Out Date">
-                            </div>
-                            
-                            <div class="input_field">
-                                <select>
-                                    <option data-display="Adultos">Adulto</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="2">3</option>
-                                </select>
-                            </div>
-
-                            <div class="input_field">
-                                <select>
-                                    <option data-display="Criancas">Crianca</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="2">3</option>
-                                </select>
-                            </div>
-                            
-                            <div class="search_btn">
-                                <button class="boxed-btn4 " type="submit" >Search</button>
-                            </div>
-                        </form>
+                        </form>    
                     </div>
                 </div>
             </div>
@@ -59,45 +59,35 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="filter_result_wrap">
-                        <h3>Filter Result</h3>
+                        
                         <div class="filter_bordered">
-                            <div class="filter_inner">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="single_select">
-                                            <select>
-                                                <option data-display="Country">Country</option>
-                                                <option value="1">Africa</option>
-                                                <option value="2">canada</option>
-                                                <option value="4">USA</option>
-                                              </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_select">
-                                            <select>
-                                                <option data-display="Travel type">Travel type</option>
-                                                <option value="1">advance</option>
-                                                <option value="2">advance</option>
-                                                <option value="4">premium</option>
-                                              </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="range_slider_wrap">
-                                            <span class="range">Prise range</span>
-                                            <!-- <div id="slider-range"></div> -->
-                                            <p>
-                                                <input type="range"  class="custom-range" min="0" max="5" step="0.5">
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <form method="POST">
+                                <h3>Filter Result</h3>
+                                {% csrf_token %}
+                                <div class="filter_inner">
 
-                            <div class="reset_btn">
-                                <button class="boxed-btn4" type="submit">Reset</button>
-                            </div>
+                                    <div class="form-group">
+                                        <label for="Categoria">Categoria: </label>
+                                        {% render_field filterform.categoria class+='form-control' %}
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group">
+                                        <label for="Preco">Preco: </label>
+                                        <p><b>Min: $ 1</b></p>
+                                        {% render_field filterform.price type="range" min="1" max="100" value="50" class="form-control custom-range" %}
+                                        <p><b>Max: $ 100 000 </b></p> 
+                                    </div>
+
+                                    <div class="reset_btn">
+                                        <button class="boxed-btn4" type="submit">Reset</button>
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+
                         </div>
                     </div>
                 </div>

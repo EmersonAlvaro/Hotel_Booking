@@ -1,60 +1,136 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
 
 <div class="testimonial_area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{form}}
-                    <br>
-                    <div class="reset_btn">
-                        <button class="boxed-btn4" type="submit">Reservar</button>
+            <div class="col-lg-8">
+                <article class="blog_item">
+                    <div class="blog_item_img">
+                        <a href="{% static hotel.cover %}" class="img-pop-up">
+                            <img class="card-img rounded-0" src="{% static hotel.cover %}" alt="">
+                        </a>
+                        <div class=" blog_item_date">
+                            <h3>{{ hotel.name }}</h3>
+                        </div>
                     </div>
 
-                </form>
-            </div>
-            <div class="col-lg-8">
-                <div class="row ">
-                    <div class="col-lg-8 col-md-9">
-                        <div class="">
-                            <h3 class="mb-30">{{ hotel.name }}</h3>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="{% static hotel.cover %}" alt="" >
-                                </div>
-                            </div>
+                    <div class="blog_details">
+                        <div class="d-inline-block">
+                            <h4> {{ hotel.localizacao }} </h4>
+                            <span class="d-flex">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </span>
+                            <span>$ {{ hotel.price }}</span>
                         </div>
-                        <div class="destination_info">
-                            <br>
-                            <div class="col-md-9 mt-sm-20">
-                                <p>{{ hotel.localizacao }}</p>
-                                <span class="d-flex">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </span>
-                                <div class="days">
-                                    <p>(20 Review)</p>
-                                </div>
-                                <div class="days">
-                                    <p>$ {{ hotel.price }}</p>
-                                </div>
-                            </div>
-                            <br>
-                            <h3>Descricao</h3>
-                            <p>{{ hotel.descricao }}</p>
-                        </div>
+                        <p>{{ hotel.descricao }}</p>
+                        <ul class="blog-info-link">
+                            <li><i class="fa fa-user"></i> (20 Review) </li>
+                            <li><i class="fa fa-comments"></i> 03 Comments</li>
+                        </ul>
                     </div>
+                </article>
+            </div>
+            <div class="col-lg-4">
+                <div class="filter_result_wrap">
+                
+                <div class="filter_bordered">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h3>Dados da Reserva: </h3>
+                        <div class="filter_inner">
+
+                            <div class="form-group">
+                                <label for="Adultos">Adultos: </label>
+                                {% render_field form.adultos class+='form-control' %}
+                            </div>
+                            <div class="form-group">
+                                <label for="Criancas">Criancas: </label>
+                                {% render_field form.crianca class+='form-control'  %}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="Cbeck In ">Check In : </label>
+                                {% render_field form.checkindate class+='form-control' type='date' %}                        
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Check Out">Check Out: </label>
+                                {% render_field form.checkoutdate class+='form-control' type='date' %}                        
+                            </div>
+
+                            
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="Quarto"><h5>Quarto: </h5> </label>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    {% render_field form.room class+='form-control' %} 
+                                </div>
+                                                    
+                            </div>
+
+                            <br>
+                            <div class="reset_btn">
+                                <button class="boxed-btn4" type="submit">Reservar</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <br>
+                <div class="section_title text-center mb_70">
+                    <h3>Tipos de Quartos Disponiveis</h3>
                 </div>
             </div>
         </div>
+
+            <div class="row">
+
+                {% for room in rooms %}
+                <div class="col-lg-6">
+                    <article class="blog_item">
+                        <div class="blog_item_img">
+                            <a href="{% static room.cover %}" class="img-pop-up">
+                                <img class="card-img rounded-0" src="{% static room.cover %}" alt="">
+                            </a>
+                            <!-- <a href="#" class="blog_item_date">
+                                <h3>15</h3>
+                                <p>Jan</p>
+                            </a> -->
+                        </div>
+    
+                        <div class="blog_details">
+                            <div class="d-inline-block">
+                                <h2>{{ room.tipo }}</h2>
+                                <p>$ {{ room.price }}</p>
+                            </div>
+                            <p>{{ room.descricao }}</p>
+                            <ul class="blog-info-link">
+                                <li><i class="fa fa-user"></i> Travel, Lifestyle</li>
+                                <li><i class="fa fa-comments"></i> 03 Comments</li>
+                            </ul>
+                            <br>
+                            <a href="#" class="genric-btn info circle">Reservar</a>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+
+            </div>
     </div>
 </div>
 
@@ -64,12 +140,12 @@
             <h3>Image Gallery</h3>
             <div class="row gallery-item">
                 {% for hf in hotel_fotos %}
-                    <div class="col-md-4">
-                        <a href="{% static hf.path %}" class="img-pop-up">
-                            <div class="single-gallery-image" style="background: url({% static hf.path %});">
-                            </div>
-                        </a>
-                    </div>
+                <div class="col-md-4">
+                    <a href="{% static hf.path %}" class="img-pop-up">
+                        <div class="single-gallery-image" style="background: url({% static hf.path %});">
+                        </div>
+                    </a>
+                </div>
                 {% endfor %}
             </div>
         </div>
