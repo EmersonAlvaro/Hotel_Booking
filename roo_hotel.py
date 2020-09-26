@@ -5,8 +5,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Hotel_Booking.settings")
 import django
 django.setup()
 
-
-from Aconchego.models import Room, Hotel, Fotos
+from Aconchego.models import Room, Hotel, Fotos, Comment
 
 comment = Comment(
     autor='Sam Smith',
@@ -57,37 +56,36 @@ comment = Comment(
 comment.save()
 
 
-
 print('Hello There')
 
 
 hotel = Hotel(
-    name="Kaia Village", 
+    name="Kaia Village",
     localizacao='Pemba, Mozambique',
-    categoria =3, 
+    categoria =3,
     descricao="Localiza – se na Cidade de Pemba, estrada nº 308, no bairro Mahate",
-    price = 436, 
+    price = 436,
     cover = 'img/kaia/k1.jpg'
 )
 hotel.save()
 
 room = Room(
     tipo='The Apartments',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/kaia/k2.jpg', 
+    cover = 'img/kaia/k2.jpg',
     price= 4000,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='The Studios',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/kaia/k3.jpg', 
+    cover = 'img/kaia/k3.jpg',
     price= 2500,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
@@ -118,63 +116,63 @@ print('Hello There======')
 
 
 hotel = Hotel(
-    name="Avani Pemba Beach", 
+    name="Avani Pemba Beach",
     localizacao='Pemba, Mozambique',
-    categoria =5, 
+    categoria =5,
     descricao="o Avani Pemba Beach hotel, está localizado entre a Baía de Pemba e a Praia Wimbe. Espaço com quartos espaçosos e confortáveis, entretenimento, comida típica e estrangeira",
-    price = 4363, 
+    price = 4363,
     cover = 'img/avani/k1.jpg'
 )
 hotel.save()
 
 room = Room(
     tipo='Avani Room',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/avani/k2.jpg', 
+    cover = 'img/avani/k2.jpg',
     price= 13768,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='Avani Garden Room',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/avani/k3.jpg', 
+    cover = 'img/avani/k3.jpg',
     price= 18768,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='Avani Ocean Room',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/avani/k4.jpg', 
+    cover = 'img/avani/k4.jpg',
     price= 19768,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='Avani Ocean Deluxe Suite',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/avani/k5.jpg', 
+    cover = 'img/avani/k5.jpg',
     price= 19768,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 
 room = Room(
     tipo='Avani One Bedroom Garden Apartament',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/avani/k6.jpg', 
+    cover = 'img/avani/k6.jpg',
     price= 23456,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
@@ -198,28 +196,28 @@ hotel.save()
 print('Hello There')
 
 hotel = Hotel(
-    name="Kauri Resort", 
+    name="Kauri Resort",
     localizacao='Pemba, Mozambique',
-    categoria =3, 
+    categoria =3,
     descricao="Situada na cidade de Pemba, em plena Avenida da Marginal Bairro Nanhimbe, Pemba numero 20201. O Kauri Resort, oferece uma bela e óptima vista de uma das mas belas praias da capital de Cabo Delgado",
-    price = 436, 
+    price = 436,
     cover = 'img/kauri/k2.jpg'
 )
 hotel.save()
 
 room = Room(
     tipo='Quarto solteiro standard',
-    descricao='Quarto de hotel para uma pessoa, com uma cama de solteirocom área de 24 m2.', 
+    descricao='Quarto de hotel para uma pessoa, com uma cama de solteirocom área de 24 m2.',
     Numero_cama=1,
-    cover = 'img/kauri/k10.jpg', 
+    cover = 'img/kauri/k10.jpg',
     price= 5500,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='Suite Executiva',
-    descricao='Quarto de hotel com duas camas de solteiro destinadas a duas pessoas, com área de 70 m2. ', 
+    descricao='Quarto de hotel com duas camas de solteiro destinadas a duas pessoas, com área de 70 m2. ',
     Numero_cama=2,
     cover = 'img/kauri/k13.jpg',
     price= 12500,
@@ -229,9 +227,9 @@ hotel.rooms.add(room)
 
 room = Room(
     tipo='Quarto casal',
-    descricao='Quarto de hotel destinado a duas pessoas,com uma cama de casal.', 
+    descricao='Quarto de hotel destinado a duas pessoas,com uma cama de casal.',
     Numero_cama=1,
-    cover = 'img/kauri/k8.jpg', 
+    cover = 'img/kauri/k8.jpg',
     price= 7500,
 )
 room.save()
@@ -239,9 +237,9 @@ hotel.rooms.add(room)
 
 room = Room(
     tipo='Quarto casal ou duplo standard',
-    descricao='Quarto de hotel destinado a duas pessoas,com uma cama de casal.', 
+    descricao='Quarto de hotel destinado a duas pessoas,com uma cama de casal.',
     Numero_cama=2,
-    cover = 'img/kauri/k12.jpg', 
+    cover = 'img/kauri/k12.jpg',
     price= 6500,
 )
 room.save()
@@ -249,9 +247,9 @@ hotel.rooms.add(room)
 
 room = Room(
     tipo='Quarto familiar',
-    descricao='Quarto de hotel destinado a duas pessoas,com uma cama de casal.', 
+    descricao='Quarto de hotel destinado a duas pessoas,com uma cama de casal.',
     Numero_cama=1,
-    cover = 'img/kauri/k12.jpg', 
+    cover = 'img/kauri/k12.jpg',
     price= 7000,
 )
 room.save()
@@ -281,22 +279,22 @@ hotel.save()
 print('Hello There')
 
 hotel = Hotel(
-    name="Kirimizi Hotel", 
+    name="Kirimizi Hotel",
     localizacao='Pemba, Mozambique',
-    categoria =4, 
+    categoria =4,
     descricao="Kirimizi Hotel & Restaurante disponibiliza acomodações com um restaurante, estacionamento privado gratuito, uma piscina exterior e um bar.  Quarto espaçoso e confortável , com vista maravilhosa da praia, do recanto da piscina.",
-    price = 436, 
+    price = 436,
     cover = 'img/kirimizi/k1.jpg'
 )
 hotel.save()
 
 room = Room(
     tipo='Quarto Standard',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/kirimizi/k2.jpg', 
+    cover = 'img/kirimizi/k2.jpg',
     price= 9230,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
@@ -327,22 +325,22 @@ hotel.save()
 print('Hello There')
 
 hotel = Hotel(
-    name="The Nautilus ", 
+    name="The Nautilus ",
     localizacao='Pemba, Mozambique',
-    categoria =3, 
+    categoria =3,
     descricao="o TheNautilus Pemba está situado na cidade de Pemba. Os hóspedes podem desfrutar do restaurante,é um local extremamente aconchegante e óptimo atendimento.",
-    price = 436, 
+    price = 436,
     cover = 'img/nautilus/k1.jpg'
 )
 hotel.save()
 
 room = Room(
     tipo='Standard Room',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/nautilus/k2.jpg', 
+    cover = 'img/nautilus/k2.jpg',
     price= 13768,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
@@ -374,62 +372,62 @@ hotel.save()
 print('Hello There')
 
 hotel = Hotel(
-    name="Raphael's Hotel", 
+    name="Raphael's Hotel",
     localizacao='Pemba, Mozambique',
-    categoria =3, 
+    categoria =3,
     descricao="o Raphael's Hotel disponibiliza acomodações em Pemba. O hotel dispõe de uma piscina exterior aberta durante todo o ano e de vistas para o mar",
-    price = 436, 
+    price = 436,
     cover = 'img/raphaels/k1.jpg'
 )
 hotel.save()
 
 room = Room(
     tipo='One-Bedroom Apartment',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/raphaels/k2.jpg', 
+    cover = 'img/raphaels/k2.jpg',
     price= 130,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='Superior King Room',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/raphaels/k3.jpg', 
+    cover = 'img/raphaels/k3.jpg',
     price= 86,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='Superior King Studio',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=2,
-    cover = 'img/raphaels/k4.jpg', 
+    cover = 'img/raphaels/k4.jpg',
     price= 86,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='Superior King Room',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=1,
-    cover = 'img/raphaels/k5.jpg', 
+    cover = 'img/raphaels/k5.jpg',
     price= 86,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
 room = Room(
     tipo='Two-Bedroom Apartment',
-    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.', 
+    descricao='Quarto de hotel composto por cama Queen size ou duas camas single, varanda com vistas para o jardim e mar.',
     Numero_cama=2,
-    cover = 'img/raphaels/k6.jpg', 
+    cover = 'img/raphaels/k6.jpg',
     price= 86,
-) 
+)
 room.save()
 hotel.rooms.add(room)
 
