@@ -6,7 +6,7 @@ import django
 django.setup()
 
 
-from Aconchego.models import Room, Hotel, Fotos
+from Aconchego.models import Room, Hotel, Fotos, Comment
 
 comment = Comment(
     autor='Sam Smith',
@@ -55,7 +55,6 @@ comment = Comment(
     comment='"Working in conjunction with humanitarian aid agencies.'
 )
 comment.save()
-
 
 
 print('Hello There')
