@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load widget_tweaks %}
+{% load tagas %}
 
 {% block content %}
 
@@ -57,6 +58,7 @@
     <div class="popular_places_area">
         <div class="container">
             <div class="row">
+                
                 <div class="col-lg-4">
                     <div class="filter_result_wrap">
                         
@@ -106,10 +108,12 @@
                                         <p> {{ hotel.localizacao }} </p>
                                         <div class="rating_days d-flex justify-content-between">
                                             <span class="d-flex justify-content-center align-items-center">
+                                                {% for i in hotel.categoria|range  %}
                                                 <i class="fa fa-star"></i> 
-                                                <i class="fa fa-star"></i> 
-                                                <i class="fa fa-star"></i> 
-                                                <i class="fa fa-star"></i> 
+                                                <!-- <i class="fa fa-star"></i>  -->
+                                                <!-- <i class="fa fa-star"></i>  -->
+                                                <!-- <i class="fa fa-star"></i>  -->
+                                                {% endfor %}
                                                 <a href="#">(20 Review)</a>
                                             </span>
                                             <div class="days">

@@ -1,11 +1,15 @@
 from django import forms
 from .models import *
 
+
 class ReservaForm(forms.ModelForm):
+
+    def __init__(self, hotel, *args, **kwargs):
+        super(ReservaForm, self).__init__(*args, **kwargs)
+        self.fields['room'] =forms.ModelChoiceField(queryset=hotel.rooms.all())
 
     class Meta:
         model = Reserva
-        room = forms.ModelChoiceField(queryset=Room.objects.all()[:3])
 
         fields = [
                 'checkindate',
@@ -79,4 +83,13 @@ class FilterForm(forms.Form):
                 'categoria',
                 'price',
             ]
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=255)
+    password = forms.CharField(max_length=255)
+
+    fields = [
+                'username',
+                'password', 
+    ]
 

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card-body ">
+    
+        <form class="form-signin col-md-6" method="POST">
+            <h3 class="card-title text-center">
+                Hello, {{ user.username|default:'Guest' }}!
+            </h3>
+
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            
+            <div class="col-auto">
+                <button name="logout" class="boxed-btn4" type="submit">Log out</button>
+            </div>
+                        
+            {% else %}
+
+            <h5 class="card-title text-center">Sign In</h5>
+
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>     
+                {% render_field form.username class+='form-control' type="text" placeholder="Username" %} 
+            </div>
+
+            <div class="input-group mb-2">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                {% render_field form.password class+='form-control' type="password" placeholder="Password" %} 
+            </div>
+
+            <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="lembrar de mim"> Lembrar de mim
+                </label>
+            </div>
+
+            <div class="form-group">
+                <button name="login" class="boxed-btn4" type="submit">Login</button>
+            </div> 
+
+            <hr class="my-4">
+            <button class="btn btn-block btn-social btn-google " type="submit"><i class="fab fa-google "></i> Sign in with Google</button>
+
+            {% endif %}
+
+        </form>
+        </div>    
+    
+    
+</div>
+
+{% endblock content %}

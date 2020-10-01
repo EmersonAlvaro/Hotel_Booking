@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
 from .forms import *
 import random 
+from django.contrib.auth import authenticate, login, logout
+
 
 # Create your views here.
 
@@ -38,15 +40,16 @@ def hotels(request):
 def hotel_details(request, pk):
 
     hotel = Hotel.objects.get(pk=pk)
-
+    
     if request.method == 'POST':
         print("Hello There")
-        forma = ReservaForm(request.POST)
+
+        forma = ReservaForm(hotel, request.POST)
+        
         if forma.is_valid():
-            # forma.save()
             obj = forma.save(commit=False)
             obj.hotel = hotel
-            obj.price =obj.room.price
+            obj.preco =obj.room.price
             obj.save()
             return redirect ('reserva', pk=obj.pk)
         
@@ -54,8 +57,8 @@ def hotel_details(request, pk):
         
         hotel_fotos = hotel.fotos.all()
         rooms = hotel.rooms.all()
-        form = ReservaForm(initial={'room':rooms, })
-
+        form = ReservaForm(hotel)
+        
         context = {
             'hotel': hotel,
             'form': form,
@@ -112,5 +115,31 @@ def contacto(request):
     return render(request, 'contacto.html', context=context)
 
 def about(request):
-    context = {}
+
+    comments = Comment.objects.all().order_by('?')
+    
+    context = {
+        'comments': comments[:5],
+    }
     return render(request, 'about.html', context=context)
+
+def logind(request):
+
+    if request.method == 'POST' and 'login' in request.POST:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect ('login')
+
+    if request.method == 'POST' and 'logout' in request.POST:
+        logout(request)
+        return redirect ('login')
+    
+    else:
+        form = LoginForm()
+        context = {'form':form}
+    
+    return render(request, 'login.html', context=context)

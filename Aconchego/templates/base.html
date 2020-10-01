@@ -60,24 +60,23 @@
                                             <li><a class="" href="{% url 'hotels' %}">Hotéis</a></l/li>
                                             <li><a href="{% url 'contacto' %}">Contacto</a></li>
                                             <li><a href="{% url 'about' %}">About</a></li>
+                                            {% if user.is_authenticated %}
+                                            <li><a href="{% url 'login' %}">
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                                {{ user.username}} </a></li>
+                                            {% else %}
+                                               <li><a href="{% url 'login' %}">
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                                Login </a></li>
+                                            {% endif %}
+
                                         </ul>
+                                        
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 d-none d-lg-block">
-                                <div class="social_wrap d-flex align-items-center justify-content-end">
-                                    <div class="number">
-                                        <p> <i class="fa fa-phone"></i> + 258 84 603 9310 </p>
-                                    </div>
-                                    <div class="social_links d-none d-xl-block">
-                                        <ul>
-                                            <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                            <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="col-xl-4 col-lg-4  d-lg-block ">
+                                
                             </div>
                             <div class="seach_icon">
                                 <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
@@ -86,6 +85,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
+
                             </div>
                         </div>
                     </div>
@@ -141,11 +141,11 @@
         <div class="footer_top">
             <div class="container">
                         <div class="footer_widget">
-                            <div class="footer_logo">
+                            <!-- <div class="footer_logo">
                                 <a href="#">
-                                    <h3>Aconchego</h3>
+                                    <h1>Aconchego</h1>
                                 </a>
-                            </div>
+                            </div> -->
                             <p>Avenida Eduardo Mondlane, Rua 12 <br> Pemba - Mozambique <br>
                                 <a href="#">+258 84 603 9310</a> <br>
                                 <a href="#"> aconchegopemba@gmail.co.mz.com</a>
@@ -178,7 +178,9 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <p class="copy_right text-center">
+                            
                             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                            <br> Emerson Alvaro Cardoso
                         </p>
                     </div>
                 </div>
