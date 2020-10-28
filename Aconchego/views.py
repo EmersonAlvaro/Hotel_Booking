@@ -3,6 +3,7 @@ from .models import *
 from .forms import *
 import random 
 from django.contrib.auth import authenticate, login, logout
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -122,6 +123,22 @@ def about(request):
         'comments': comments[:5],
     }
     return render(request, 'about.html', context=context)
+
+def listreserva(request):
+
+    reservas = Reserva.objects.all()
+
+    paginator = Paginator(reservas, 6)
+
+    page_number = request.GET.get('page')
+
+    rsrs = paginator.get_page(page_number)
+
+    context = {
+        'reservas' : rsrs,
+    }
+    return render(request, 'listreserva.html', context=context)
+
 
 def logind(request):
 
